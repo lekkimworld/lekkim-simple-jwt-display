@@ -3,7 +3,7 @@ const app = express();
 
 app.get("/api/reply", (req, res) => {
     const auth = req.headers.authorization;
-    if (auth.indexOf("Bearer ") === 0) {
+    if (auth && auth.indexOf("Bearer ") === 0) {
         const token = auth.substring(7);
         const elem = token.split(".");
         const headerObj = JSON.parse(Buffer.from(elem[0], "base64").toString());
